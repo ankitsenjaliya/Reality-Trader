@@ -1,0 +1,16 @@
+{% extends 'admin_portal/base_admin.html' %}
+
+{% block content %}
+
+    <form method="post">{% csrf_token %}
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="card-md-6"><h1>Property Image Edit</h1>
+                {{ form.as_p }}
+                <input type="submit" value="Submit"/>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </form>
+
+{% endblock %}

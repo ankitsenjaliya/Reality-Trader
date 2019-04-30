@@ -1,0 +1,11 @@
+{% extends 'admin_portal/base_admin.html' %}
+
+{% block content %}
+
+    <h1>Property Image Delete</h1>
+    <form method="post">{% csrf_token %}
+        Are you sure you want to delete "{{ object }}" ?
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+
+{% endblock %}

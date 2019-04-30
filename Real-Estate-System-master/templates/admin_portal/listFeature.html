@@ -1,0 +1,39 @@
+{% extends 'admin_portal/base_admin.html' %}
+
+{% block content %}
+    <h3>Features List</h3>
+    <hr>
+    <div>
+        <a class="btn btn-primary" href="{% url 'addFeature' %}">Add New Feature </a>
+        <a class="btn btn-success" href="{% url 'importFeature' %}">Import Features </a>
+        <a class="btn btn-info" href="{% url 'assignFeature' %}">Assign Features to Role </a>
+    </div>
+    <hr>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark ">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">System Feature Name</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if features != '' %}
+            {% for feature in features %}
+                <tr>
+                    <th scope="row">{{ feature.id }}</th>
+                    <td>{{ feature.name }}</td>
+                    <td><a href="{% url "editFeature" feature.id %}"><i style="color: green;"
+                                                                        class="fa fa-edit"></i></a></td>
+                    <td><a href="{% url "deleteFeature" feature.id %}"><i style="color: red;"
+                                                                          class="fa fa-trash"></i></a></td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}

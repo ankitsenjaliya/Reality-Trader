@@ -1,0 +1,214 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block client %}
+    <!--Hero Section start-->
+    <div class="hero-section section position-relative">
+
+        <!--Hero Slider start-->
+        <div class="hero-slider section">
+
+            <!--Hero Item start-->
+            <div class="hero-item" style="background-image: url(static/images/hero/hero-1.jpg)">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+
+                            <!--Hero Content start-->
+                            <div class="hero-property-content text-center">
+                                <h1 class="title"><a href="#">BIGGEST PROPERTY FINDER</a></h1>
+                                <span class="location"> We are here to help you find your new home</span>
+                            </div>
+                            <!--Hero Content end-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Hero Item end-->
+
+            <!--Hero Item start-->
+            <div class="hero-item" style="background-image: url(static/images/hero/hero-3.jpg)">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+
+                            <!--Hero Content start-->
+                            <div class="hero-property-content text-center">
+                                <h1 class="title"><a href="single-properties.html">FIND POPULAR PROPERTY</a></h1>
+                                <span class="location"> Start an easy search for your new property</span>
+                            </div>
+                            <!--Hero Content end-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Hero Item end-->
+
+        </div>
+        <!--Hero Slider end-->
+
+    </div>
+    <!--Hero Section end-->
+
+    <!--Feature property section start-->
+    <div class="property-section section bg-gray pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+        <div class="container">
+
+            <!--Section Title start-->
+            <div class="row">
+                <div class="col-md-12 mb-60 mb-xs-30">
+                    <div class="section-title center">
+                        <h1>Feature Property</h1>
+                    </div>
+                </div>
+            </div>
+            <!--Section Title end-->
+
+            <div class="row">
+
+                <!--Property Slider start-->
+                <div class="property-carousel section">
+                    <!--Property start-->
+                    {% for property in property_item %}
+                    <div class="property-item col">
+                        <div class="property-inner">
+                            <div class="image">
+                                <span class="label">Feature</span>
+                               <a href="{% url 'singlePropertyDetails' property.id %}"><img
+                                            src="/static/images/property/property-2.jpg"
+                                            alt=""></a>
+                                <ul class="property-feature">
+                                        <li>
+                                            <span class="area"><img src="/static/images/icons/area.png"
+                                                                    alt="">{{ property.propertyTotalArea }} SqFt</span>
+                                        </li>
+                                        <li>
+                                            <span class="bed"><img src="/static/images/icons/bed.png"
+                                                                   alt=""> {{ property.propertyNoOfBedRooms }} </span>
+                                        </li>
+                                        <li>
+                                            <span class="bath"><img src="/static/images/icons/bath.png"
+                                                                    alt="">{{ property.propertyNoOfBedRooms }}</span>
+                                        </li>
+
+                                    </ul>
+                            </div>
+                            <div class="content">
+                                <div class="left">
+                                   <h3 class="title"><a
+                                                href="{% url 'singlePropertyDetails' property.id %}">{{ property.propertyTitle }}</a>
+                                        </h3>
+                                        <span class="location"><img src="/static/images/icons/marker.png"
+                                                                    alt="">{{ property.propertyStreetNumber }}, {{ property.street }} </span>
+                                </div>
+                                <div class="right">
+                                    <div class="type-wrap">
+                                         <span class="price">${{ property.propertySellingPrice }}</span>
+                                            <span class="type">For Sale</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!--Property end-->
+
+                </div>
+                <!--Property Slider end-->
+
+            </div>
+
+        </div>
+    </div>
+    <!--Feature property section end-->
+
+
+
+    <!--Services section start-->
+    <div class="service-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
+        <div class="container">
+
+            <!--Section Title start-->
+            <div class="row">
+                <div class="col-md-12 mb-60 mb-xs-30">
+                    <div class="section-title center">
+                        <h1>Our Services</h1>
+                    </div>
+                </div>
+            </div>
+            <!--Section Title end-->
+
+            <div class="row row-30 align-items-center">
+
+                <div class="col-lg-12 col-12">
+                    <div class="row row-20">
+
+                        <!--Service start-->
+                        <div class="col-md-3 col-12 mb-30">
+                            <div class="service">
+                                <div class="service-inner">
+                                    <div class="head">
+                                        <div class="icon"><img src="{% static 'images/service/service-1.png' %}" alt="">
+                                        </div>
+                                        <h4>Buy Property</h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--Service end-->
+
+                        <!--Service start-->
+                        <div class="col-md-3 col-12 mb-30">
+                            <div class="service">
+                                <div class="service-inner">
+                                    <div class="head">
+                                        <div class="icon"><img src="{% static 'images/service/service-2.png' %}" alt="">
+                                        </div>
+                                        <h4>Sale Property</h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--Service end-->
+
+                        <!--Service start-->
+                        <div class="col-md-3 col-12 mb-30">
+                            <div class="service">
+                                <div class="service-inner">
+                                    <div class="head">
+                                        <div class="icon"><img src="{% static 'images/service/service-3.png' %}" alt="">
+                                        </div>
+                                        <h4>Rent Property</h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--Service end-->
+
+                        <!--Service start-->
+                        <div class="col-md-3 col-12 mb-30">
+                            <div class="service">
+                                <div class="service-inner">
+                                    <div class="head">
+                                        <div class="icon"><img src="{% static 'images/service/service-4.png' %}" alt="">
+                                        </div>
+                                        <h4>Mortgage Property</h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--Service end-->
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--Services section end-->
+{% endblock %}

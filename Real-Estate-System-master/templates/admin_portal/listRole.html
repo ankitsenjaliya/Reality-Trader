@@ -1,0 +1,36 @@
+{% extends 'admin_portal/base_admin.html' %}
+
+{% block content %}
+    <h3>Role List</h3>
+    <hr>
+    <div>
+        <a class="btn btn-primary" href="{% url 'addRole' %}">Add New Role </a>
+    </div>
+    <hr>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Role Name</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if roles != '' %}
+            {% for role in roles %}
+                <tr>
+                    <th scope="row">{{ role.id }}</th>
+                    <td>{{ role.name }}</td>
+                    <td><a href="{% url "editRole" role.id %}"><i style="color: green;" class="fa fa-edit"></i></a></td>
+                    <td><a href="{% url "deleteRole" role.id %}"><i style="color: red;" class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}

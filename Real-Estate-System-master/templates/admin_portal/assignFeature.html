@@ -1,0 +1,45 @@
+{% extends 'admin_portal/base_admin.html' %}
+
+{% block content %}
+
+    <h3> Assign Features to Role</h3>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        {% if sysfeatures != '' %}
+            <div class="form-group">
+                <label>System Features : </label>
+                <select name="featurename" size="3">
+                    {% for sysfeature in sysfeatures %}
+                        <option value=" {{ sysfeature.name }}"> {{ sysfeature.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endif %}
+
+        {% if roles != '' %}
+            <div class="form-group">
+                <label>Roles : </label>
+                <select name="rolename" size="3">
+                    {% for role in roles %}
+                        <option value=" {{ role.name }}"> {{ role.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endif %}
+
+        {% if permissiontypes != '' %}
+            <div class="form-group">
+                <label>Permission Types : </label>
+                <select name="permissiontype" size="4">
+                    {% for permissiontype in permissiontypes %}
+                        <option value=" {{ permissiontype.name }}"> {{ permissiontype.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endif %}
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+{% endblock %}
+
+

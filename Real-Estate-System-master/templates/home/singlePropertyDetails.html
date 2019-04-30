@@ -1,0 +1,110 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block client %}
+
+    <!--Page Banner Section start-->
+    <div class="page-banner-section section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1 class="page-banner-title">Properties</h1>
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li class="active">Property Details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Page Banner Section end-->
+
+    <!--New property section start-->
+    <div class="property-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12 col-12 order-1 order-lg-2 mb-sm-50 mb-xs-50">
+                    <div class="row">
+
+                        <!--Property start-->
+                        <div class="single-property col-12 mb-50">
+                            <div class="property-inner">
+
+                                <div class="head">
+                                    <div class="left">
+                                        <h1 class="title">{{ property_item.propertyTitle }}</h1>
+                                        <span class="location"><img src="/static/images/icons/marker.png"
+                                                                    alt="">{{ property_item.propertyStreetNumber }}, {{ property_item.street }}</span>
+                                    </div>
+                                    <div class="right">
+                                        <div class="type-wrap">
+                                            <span class="price">${{ property_item.propertySellingPrice }}<span>Month</span></span>
+                                            <span class="type">For Rent</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="image mb-30">
+                                    <img src="/static/images/property/single-property-1.jpg" alt="">
+                                </div>
+
+                                <div class="content">
+
+                                    <h3>Description</h3>
+
+                                    <p></p>
+                                    <p>Khonike - Real Estate Bootstrap 4 Templateis the Best should be the consectetur
+                                        adipiscing elit, sed do eiusmod tempor incididunt ut labore lore gna iqua. Ut
+                                        enim ad minim veniam, quis nostrud exercitation.</p>
+
+                                    <div class="row mt-30 mb-30">
+
+                                        <div class="col-md-5 col-12 mb-xs-30">
+                                            <h3>Condition</h3>
+                                            <ul class="feature-list">
+                                                <li>
+                                                    <div class="image"><img src="/static/images/icons/area.png" alt="">
+                                                    </div>
+                                                    {{ property_item.propertyTotalArea }} sqft
+                                                </li>
+                                                <li>
+                                                    <div class="image"><img src="/static/images/icons/bed.png" alt="">
+                                                    </div>
+                                                    {{ property_item.propertyNoOfBedRooms }}</li>
+                                                <li>
+                                                    <div class="image"><img src="/static/images/icons/bath.png" alt="">
+                                                    </div>
+                                                    {{ property_item.propertyNoOfBedRooms }} </li>
+
+                                            </ul>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-12">
+                                            <h3>Location</h3>
+                                            <div class="embed-responsive embed-responsive-16by9">
+                                                <div id="single-property-map"
+                                                     class="embed-responsive-item "> {{ property_item.propertyStreetNumber }}, {{ property_item.street }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--Property end-->
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--New property section end-->
+
+{% endblock %}

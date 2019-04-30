@@ -1,0 +1,24 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block client %}
+    <div class="login-register-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-8 col-12 ml-auto mr-auto mr-top">
+
+                    <ul class="login-register-tab-list nav">
+
+                        <li><a class="active" href="#register-tab" data-toggle="tab">Delete Advertisement</a></li>
+                    </ul>
+
+                    <form method="post">{% csrf_token %}
+                        Are you sure you want to delete "{{ object }}" ?
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

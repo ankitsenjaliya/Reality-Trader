@@ -1,0 +1,10 @@
+{% autoescape off %}
+
+    Hi {{ user.username }},
+
+    Please login using below temporary password and change you password to secure your account.
+    Your temporary password: {{ temporary_password }}
+
+    Please login to change your password on http://{{ domain }}{% url 'login' %}
+
+{% endautoescape %}

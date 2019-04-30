@@ -1,0 +1,39 @@
+{% extends 'admin_portal/base_admin.html' %}
+
+{% block content %}
+    <h3>Property Image List</h3>
+    <hr>
+    <a class="btn btn-primary" href="{% url 'addPropertyImage' %}">Add New Property Image</a>
+    <hr>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Property</th>
+            <th scope="col">Image</th>
+            <th scope="col">Property Image Description</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if properties_images != '' %}
+            {% for property_image in properties_images %}
+                <tr>
+                    <th scope="row">{{ property_image.propertyImageID }}</th>
+                    <td>{{ property_image.propertyID }}</td>
+                    <td><img src="/media/{{ property_image.propertyImage }}" width="70" height="70"/></td>
+                    {% comment %}<td>{{ property_image.propertyImage }}</td> {% endcomment %}
+                    <td>{{ property_image.propertyImageDescription }}</td>
+                    <td><a href="{% url "editPropertyImage" property_image.propertyImageID %}"><i style="color: green;"
+                                                                                                  class="fa fa-edit"></i></a>
+                    </td>
+                    <td><a href="{% url "deletePropertyImage" property_image.propertyImageID %}"><i style="color: red;"
+                                                                                                    class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

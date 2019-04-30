@@ -1,0 +1,33 @@
+{% extends 'admin_portal/base_admin.html' %}
+
+{% block content %}
+    <h3>User Role List</h3>
+    <hr>
+    <div>
+        <a class="btn btn-primary" href="{% url 'manageRole' %}">Manage Role </a>
+    </div>
+    <hr>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Assigned Role</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if userroles != '' %}
+            {% for userrole in userroles %}
+                <tr>
+                    <td>{{ userrole.username }}</td>
+                    <td>{{ userrole.rolename }}</td>
+                    <td><a href="{% url "deleteUserRole" userrole.id %}"><i style="color: red;" class="fa fa-trash"></i></a>
+                    </td>
+
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+
+{% endblock %}

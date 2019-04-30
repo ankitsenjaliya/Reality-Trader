@@ -1,0 +1,40 @@
+{% extends 'admin_portal/base_admin.html' %}
+
+{% block content %}
+    <h3>Advertisement List</h3>
+    <hr>
+    <a class="btn btn-primary" href="{% url 'addAdvertisement' %}">Add New Advertisement </a>
+    <hr>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">User</th>
+            <th scope="col">Property</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Description</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if ads != '' %}
+            {% for ad in ads %}
+                <tr>
+                    <th scope="row">{{ ad.id }}</th>
+                    <td>{{ ad.advUserId }}</td>
+                    <td>{{ ad.advProperty }}</td>
+                    <td>{{ ad.advStartDate }}</td>
+                    <td>{{ ad.advEndDate }}</td>
+                    <td>{{ ad.advDescription }}</td>
+                    <td><a href="{% url "editAdvertisement" ad.id %}"><i style="color: green;"
+                                                                         class="fa fa-edit"></i></a></td>
+                    <td><a href="{% url "advertisementConfirmDelete" ad.id %}"><i style="color: red;"
+                                                                                  class="fa fa-trash"></i></a></td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

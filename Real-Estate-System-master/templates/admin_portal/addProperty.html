@@ -1,0 +1,23 @@
+s{% extends 'admin_portal/base_admin.html' %}
+
+{% block content %}
+    <h3> Add New Property</h3>
+    <hr>
+    <form method="post">{% csrf_token %}
+        {% csrf_token %}
+        {% for field in form %}
+            <p>
+                {{ field.label_tag }}<br>
+                {{ field }}
+                {% if field.help_text %}
+                    <small style="color: grey">{{ field.help_text }}</small>
+                {% endif %}
+                {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                {% endfor %}
+            </p>
+        {% endfor %}
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+
+{% endblock %}

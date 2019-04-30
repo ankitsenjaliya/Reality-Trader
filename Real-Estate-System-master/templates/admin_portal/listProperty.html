@@ -1,0 +1,72 @@
+{% extends 'admin_portal/base_admin.html' %}
+
+{% block content %}
+    <h3>Property List</h3>
+    <hr>
+    <a class="btn btn-primary" href="{% url 'addProperty' %}">Add New Property </a>
+    <hr>
+    <div style="overflow-x:auto;">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Remove</th>
+                <th scope="col">Property Title</th>
+                <th scope="col">Category</th>
+                <th scope="col">Sector</th>
+                <th scope="col">Facing</th>
+                <th scope="col">Country</th>
+                <th scope="col">Province</th>
+                <th scope="col">City</th>
+                <th scope="col">Street</th>
+                <th scope="col">Postal Code</th>
+                <th scope="col">Street Number</th>
+                <th scope="col">Construction Date</th>
+                <th scope="col">Registration Date</th>
+                <th scope="col">No of Halls</th>
+                <th scope="col">No of Bedrooms</th>
+                <th scope="col">No of Bathrooms</th>
+                <th scope="col">No of Floors</th>
+                <th scope="col">Total Area</th>
+                <th scope="col">Asking Price</th>
+                <th scope="col">Selling Price</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% if properties != '' %}
+                {% for property in properties %}
+                    <tr>
+                        <th scope="row">{{ property.id }}</th>
+                        <td><a href="{% url "editProperty" property.id %}"><i style="color: green;"
+                                                                              class="fa fa-edit"></i></a></td>
+                        <td><a href="{% url "deleteProperty" property.id %}"><i style="color: red;"
+                                                                                class="fa fa-trash"></i></a></td>
+                        <td>{{ property.propertyTitle }}</td>
+                        <td>{{ property.property_category }}</td>
+                        <td>{{ property.property_sector }}</td>
+                        <td>{{ property.property_facing }}</td>
+                        <td>{{ property.property_country }}</td>
+                        <td>{{ property.property_province }}</td>
+                        <td>{{ property.property_city }}</td>
+                        <td>{{ property.propertyStreet }}</td>
+                        <td>{{ property.propertyPostalCode }}</td>
+                        <td>{{ property.propertyStreetNumber }}</td>
+                        <td>{{ property.propertyConstructionDate }}</td>
+                        <td>{{ property.propertyRegistrationDate }}</td>
+                        <td>{{ property.propertyNoOfHalls }}</td>
+                        <td>{{ property.propertyNoOfBedRooms }}</td>
+                        <td>{{ property.propertyNoOfBathRooms }}</td>
+                        <td>{{ property.propertyNoOfFloors }}</td>
+                        <td>{{ property.propertyTotalArea }}</td>
+                        <td>{{ property.propertyAskingPrice }}</td>
+                        <td>{{ property.propertySellingPrice }}</td>
+
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

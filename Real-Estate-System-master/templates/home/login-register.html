@@ -1,0 +1,98 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block client %}
+    <!--Page Banner Section start-->
+    <div class="page-banner-section section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1 class="page-banner-title">Login or Register</h1>
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li class="active">Login or Register</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Page Banner Section end-->
+    <!--Login & Register Section start-->
+    <div class="login-register-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-8 col-12 ml-auto mr-auto">
+
+                    <ul class="login-register-tab-list nav">
+                        <li><a class="active" href="#login-tab" data-toggle="tab">Login</a></li>
+                        <li>or</li>
+                        <li><a href="#register-tab" data-toggle="tab">Register</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="login-tab" class="tab-pane show active">
+                            <form action="#">
+                                <div class="row">
+                                    <div class="col-12 mb-30"><input type="text" placeholder="User Name" required></div>
+                                    <div class="col-12 mb-30"><input type="password" placeholder="Password" required>
+                                    </div>
+                                    <div class="col-12 mb-30">
+                                        <ul>
+                                            <li><input type="checkbox" id="login_remember" required> <label
+                                                    for="login_remember">Remember me</label></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-12 mb-30">
+                                        <button class="btn">Login</button>
+                                    </div>
+
+                                    <div class="col-12 d-flex justify-content-between">
+                                        <span>New User to Khonike?&nbsp; <a class="register-toggle"
+                                                                            href="#register-tab">Register!</a></span>
+                                        <span><a href="forgot-password.html">Forgot Password ?</a></span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="register-tab" class="tab-pane">
+                            <form action="#">
+                                <div class="row">
+                                    <div class="col-12 mb-30"><input type="text" placeholder="First Name" required>
+                                    </div>
+                                    <div class="col-12 mb-30"><input type="text" placeholder="Last Name" required></div>
+                                    <div class="col-12 mb-30"><input type="email" placeholder="Email" required></div>
+                                    <div class="col-12 mb-30"><input type="text" placeholder="User Name" required></div>
+                                    <div class="col-12 mb-30"><input type="password" placeholder="Password" required>
+                                    </div>
+                                    <div class="col-12 mb-30"><input type="password" placeholder="Confirm Password"
+                                                                     required></div>
+                                    <div class="col-12 mb-30">
+                                        <ul>
+                                            <li><input type="checkbox" id="register_agree" required><label
+                                                    for="register_agree">I agree with your <a href="#">Terms &
+                                                Conditions</a></label></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-12 mb-30">
+                                        <ul>
+                                            <li><input type="radio" name="account_type" id="register_normal"
+                                                       checked><label for="register_normal">Normal</label></li>
+                                            <li><input type="radio" name="account_type" id="register_agent"><label
+                                                    for="register_agent">Agent</label></li>
+                                            <li><input type="radio" name="account_type" id="register_agency"><label
+                                                    for="register_agency">Agency</label></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn">Register</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Login & Register Section end-->
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'admin_portal/base_admin.html' %}
+
+{% block content %}
+    <h3>Users List</h3>
+    <hr>
+    <div>
+        <a class="btn btn-primary" href="{% url 'addUser' %}">Add New User </a>
+        <a class="btn btn-primary" href="{% url 'listUnapprovedUser' %}">Approve Users </a>
+        <a class="btn btn-success" href="{% url 'manageRole' %}">Manage Role </a>
+        <a class="btn btn-info" href="{% url 'listUserRole' %}">View User Role </a>
+    </div>
+    <hr>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark ">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">User Name</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Status</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if users != '' %}
+            {% for user in users %}
+                <tr>
+                    <th scope="row">{{ user.id }}</th>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <form action="/admin_portal/enable_disable_user/" method="post">
+                            {% csrf_token %}
+                            {% if user.is_active %}
+                                <input type="hidden" value="{{ user.id }}" name="user_id"/>
+                                <input type="hidden" value="0" name="status"/>
+                                <button class="btn btn-danger">Disable</button>
+                            {% else %}
+                                <input type="hidden" value="{{ user.id }}" name="user_id"/>
+                                <input type="hidden" value="1" name="status">
+                                <button class="btn btn-success">Enable</button>
+                            {% endif %}
+                        </form>
+                    </td>
+                    <td><a href="{% url "editUser" user.id %}"><i style="color: green;" class="fa fa-edit"></i></a></td>
+                    <td><a href="{% url "deleteUser" user.id %}"><i style="color: red;" class="fa fa-trash"></i> </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}

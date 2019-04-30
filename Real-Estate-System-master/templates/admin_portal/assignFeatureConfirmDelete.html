@@ -1,0 +1,12 @@
+{% extends 'admin_portal/base_admin.html' %}
+
+{% block content %}
+
+    <h3>Assign Feature Delete</h3>
+    <hr>
+    <form method="post">{% csrf_token %}
+        Are you sure you want to delete "{{ object }}" ?
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+
+{% endblock %}

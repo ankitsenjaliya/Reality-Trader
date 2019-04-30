@@ -1,0 +1,51 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block client %}
+    <!--Page Banner Section start-->
+    <div class="page-banner-section section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1 class="page-banner-title">Contact Us</h1>
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li class="active">Contact Us</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Page Banner Section end-->
+    <!--New property section start-->
+    <div class="contact-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+
+                        <div class="contact-info col-md-4 col-12 mb-30">
+                            <i class="pe-7s-map"></i>
+                            <h4>address</h4>
+                            <p>401 Sunset Ave, Windsor, ON N9B 3P4</p>
+                        </div>
+
+                        <div class="contact-info col-md-4 col-12 mb-30">
+                            <i class="pe-7s-phone"></i>
+                            <h4>Phone</h4>
+                            <p><a href="#">+012 345 678 101</a><a href="#">+012 345 678 102</a></p>
+                        </div>
+
+                        <div class="contact-info col-md-4 col-12 mb-30">
+                            <i class="pe-7s-global"></i>
+                            <h4>Website</h4>
+                            <p><a href="#">info@realtrader.com</a><a href="#">www.realtrader.com</a></p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--New property section end-->
+{% endblock %}

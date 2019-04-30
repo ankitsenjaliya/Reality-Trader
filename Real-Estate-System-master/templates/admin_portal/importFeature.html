@@ -1,0 +1,25 @@
+{% extends 'admin_portal/base_admin.html' %}
+
+{% block content %}
+
+    <h3> Import System Features</h3>
+    <hr>
+    {% if messages %}
+        {% for message in messages %}
+            <div>
+                {{ message|safe }}
+            </div>
+        {% endfor %}
+    {% else %}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label>Upload File</label>
+            <input type="file" name="file">
+
+            <button type="submit" class="btn btn-success"> Upload</button>
+        </form>
+
+    {% endif %}
+
+
+{% endblock %}

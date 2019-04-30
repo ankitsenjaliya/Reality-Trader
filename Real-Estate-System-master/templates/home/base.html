@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html class="no-js">
+<title>Realty Trader</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% load  static %}
+
+<!-- All css files are included here. -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/iconfont.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+<link rel="stylesheet" href="{% static 'css/helper.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<!-- Modernizr JS -->
+<script src="{% static 'js/vendor/modernizr-2.8.3.min.js' %}"></script>
+<style>
+    form.example{
+            margin: auto;
+    max-width: 220px;
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 600;
+    letter-spacing: 0.25px;
+    font-family: "Poppins", sans-serif;
+    color: #FFFFFF;
+    display: block;
+    padding: 18px 0;
+    position: relative;
+    text-transform: capitalize;
+    }
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #004395;
+  color: #f9c322;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #004395;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+<body>
+
+
+<div id="main-wrapper">
+
+    <!--Header section start-->
+    <header class="header header-sticky">
+        <div class="header-bottom menu-center">
+            <div class="container">
+                <div class="row justify-content-between">
+
+                    <!--Logo start-->
+                    <div class="col mt-10 mb-10">
+                        <div class="logo">
+                            <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt=""></a>
+                        </div>
+                    </div>
+                    <!--Logo end-->
+
+                    <!--Menu start-->
+                    <div class="col d-none d-lg-flex" style="padding:0px !important;">
+                        <nav class="main-menu">
+                            <ul>
+                                <li><a href="{% url 'home' %}">Home</a></li>
+{#                                <li><a href="{% url 'propertylisting' %}">Search Property</a></li>#}
+                                <li><a href="{% url 'useraddAdvertisement' %}">Advertise Property</a></li>
+                                <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                                <li><a href="{% url 'about' %}">About Us</a></li>
+                                {% if request.user.is_authenticated == False %}
+                                    <li><a href="{% url 'login' %}">Login</a></li>
+                                    <li><a href="{% url 'register' %}">Register</a></li>
+                                {% endif %}
+                                {% if request.user.is_authenticated %}
+                                    <li class="has-dropdown"><a href="#">My Account</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="{% url "updateProfile" user.id %}">Update Profile</a></li>
+                                            <li><a href="{% url 'changePassword' %}">Change Password</a></li>
+                                            <li><a href="{% url 'manageProperty' %}">Manage Property</a></li>
+                                            <li><a href="{% url 'userlistPropertyImage' %}">Manage Property Images</a>
+                                            </li>
+                                            <li><a href="{% url 'userlistAdvertisement' %}">Manage Advertisement</a>
+                                            </li>
+                                            <li>
+                                                <form method="post" action="/logout/">
+                                                    {% csrf_token %}
+                                                    <input type="submit" value="Logout">
+                                                </form>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                            <li>
+                                <form class="example" action="{% url "propertylisting" %}" style="margin:auto;max-width:220px">
+                                    <input type="text" placeholder="Search.." name="search">
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                </form>
+                            </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!--Menu end-->
+
+                    <!--User start-->
+                    <div class="col mr-sm-50 mr-xs-50">
+                        <div class="header-user">
+
+                            <a href="{% url 'admin_portal' %}" class="user-toggle"><i class="pe-7s-user"></i><span>Admin Portal</span></a>
+                        </div>
+                    </div>
+                    <!--User end-->
+
+                </div>
+
+                <!--Mobile Menu start-->
+                <div class="row">
+                    <div class="col-12 d-flex d-lg-none">
+                        <div class="mobile-menu"></div>
+                    </div>
+                </div>
+                <!--Mobile Menu end-->
+
+            </div>
+        </div>
+    </header>
+    <!--Header section end-->
+
+    <!-- Page content -->
+    {% block client %}
+    {% endblock %}
+    <!-- End page content -->
+
+    <!--Footer section start-->
+    <footer class="footer-section section" style="background-image: url(static/images/bg/footer-bg.jpg)">
+
+        <!--Footer Top start-->
+        <div class="footer-top section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-60 pb-lg-40 pb-md-30 pb-sm-20 pb-xs-10">
+            <div class="container">
+                <div class="row row-25">
+
+                    <!--Footer Widget start-->
+                    {% comment %}<div class="footer-widget col-lg-6 col-md-6 col-12">
+                        <img src="static/images/logo.png" alt="">
+                    </div>{% endcomment %}
+                    <!--Footer Widget end-->
+
+                    <!--Footer Widget start-->
+                    <div class="footer-widget col-lg-12 col-md-12 col-12">
+                        <div class="footer-social">
+                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                            <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+                            <a href="#" class="pinterest"><i class="fa fa-pinterest-p"></i></a>
+                        </div>
+                    </div>
+                    <!--Footer Widget end-->
+
+
+                </div>
+            </div>
+        </div>
+        <!--Footer Top end-->
+
+        <!--Footer bottom start-->
+        <div class="footer-bottom section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="copyright text-center">
+                            <p>Copyright &copy;2018 <a href="#">Realty Trader</a>. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Footer bottom end-->
+
+    </footer>
+    <!--Footer section end-->
+</div>
+
+<script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/map-place.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

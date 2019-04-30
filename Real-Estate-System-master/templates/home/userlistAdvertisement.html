@@ -1,0 +1,64 @@
+{% extends 'home/base.html' %}
+
+{% block client %}
+    <!--Page Banner Section start-->
+    <div class="page-banner-section section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1 class="page-banner-title">Advertisement List</h1>
+                    <ul class="page-breadcrumb">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li class="active">Advertisement List</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Page Banner Section end-->
+    <div class="login-register-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-12 ml-auto mr-auto">
+                    <a class="btn btn-primary" href="{% url 'useraddAdvertisement' %}">Add New Advertisement </a>
+                    <hr>
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">User</th>
+                            <th scope="col">Property</th>
+                            <th scope="col">Start Date</th>
+                            <th scope="col">End Date</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Remove</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if ads != '' %}
+                            {% for ad in ads %}
+                                <tr>
+                                    <th scope="row">{{ ad.id }}</th>
+                                    <td>{{ ad.advUserId }}</td>
+                                    <td>{{ ad.advProperty }}</td>
+                                    <td>{{ ad.advStartDate }}</td>
+                                    <td>{{ ad.advEndDate }}</td>
+                                    <td>{{ ad.advDescription }}</td>
+                                    <td><a href="{% url "usereditAdvertisement" ad.id %}"><i style="color: green;"
+                                                                                             class="fa fa-edit"></i></a>
+                                    </td>
+                                    <td><a href="{% url "useradvertisementConfirmDelete" ad.id %}"><i
+                                            style="color: red;"
+                                            class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

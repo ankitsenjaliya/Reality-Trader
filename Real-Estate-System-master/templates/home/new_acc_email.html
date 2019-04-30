@@ -1,0 +1,14 @@
+{% autoescape off %}
+
+    Hi Admin,
+
+    New user has been created in Realty Trader. Below are the details:
+
+    User Name: {{ user.username }}
+    First Name: {{ user.first_name }}
+    Last Name: {{ user.last_name }}
+    Email: {{ user.email }}
+
+    Please login to approve the user on http://{{ domain }}{% url 'listUnapprovedUser' %}
+    {#http://{{ domain }}{% url 'activate' uidb64=uid token=token %}#}
+{% endautoescape %}
